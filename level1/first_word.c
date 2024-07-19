@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 18:10:58 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/13 19:13:08 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/06/18 17:07:15 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/06/18 17:13:57 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	is_space(char c)
 {
@@ -30,31 +20,15 @@ int	is_space(char c)
 int	main(int ac, char **av)
 {
 	int		i;
-	int		j;
 	char	*str;
 
 	if (ac == 2)
 	{
 		i = 0;
 		str = av[1];
-		j = ft_strlen(str);
-		while (j >= 0)
-		{
-			if (str[j] == ' ')
-			{
-				i = j + 1;
-				while (str[i] != '\0' && str[i] != ' ')
-				{
-					write(1, &str[i], 1);
-					i++;
-				}
-				write(1, " ", 1);
-			}
-			j--;
+		while (is_space(str[i]))
 			i++;
-		}
-		i = 0;
-		while (str[i] && str[i] != ' ')
+		while (str[i] && !is_space(str[i]))
 		{
 			write(1, &str[i], 1);
 			i++;

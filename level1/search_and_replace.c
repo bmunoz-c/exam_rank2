@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*   search_and_replace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 18:10:58 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/13 19:13:08 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/06/11 15:04:31 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/06/11 15:46:51 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,42 +22,22 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_space(char c)
-{
-	return ((c >= 9 && c <= 13) || c == 32);
-}
-
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	char	*str;
-
-	if (ac == 2)
+	int	i;
+	
+	if (ac == 4)
 	{
-		i = 0;
-		str = av[1];
-		j = ft_strlen(str);
-		while (j >= 0)
+		if (ft_strlen(av[2]) == 1 || ft_strlen(av[3]) == 1)
 		{
-			if (str[j] == ' ')
+			i = 0;
+			while (av[1][i] && av[2][0] && av[3][0])
 			{
-				i = j + 1;
-				while (str[i] != '\0' && str[i] != ' ')
-				{
-					write(1, &str[i], 1);
-					i++;
-				}
-				write(1, " ", 1);
+				if (av[1][i] == av[2][0])
+					av[1][i] = av[3][0];
+				write(1, &av[1][i], 1);
+				i++;
 			}
-			j--;
-			i++;
-		}
-		i = 0;
-		while (str[i] && str[i] != ' ')
-		{
-			write(1, &str[i], 1);
-			i++;
 		}
 	}
 	write(1, "\n", 1);

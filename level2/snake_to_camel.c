@@ -1,62 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*   snake_to_camel.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 18:10:58 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/13 19:13:08 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/06/11 16:04:39 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/06/11 16:04:44 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	is_space(char c)
-{
-	return ((c >= 9 && c <= 13) || c == 32);
-}
-
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	char	*str;
-
+	int	i;
 	if (ac == 2)
 	{
 		i = 0;
-		str = av[1];
-		j = ft_strlen(str);
-		while (j >= 0)
+		while (av[1][i])
 		{
-			if (str[j] == ' ')
+			if (av[1][i] == '_')
 			{
-				i = j + 1;
-				while (str[i] != '\0' && str[i] != ' ')
-				{
-					write(1, &str[i], 1);
-					i++;
-				}
-				write(1, " ", 1);
+				i++;
+				av[1][i] = av[1][i] - 32;
 			}
-			j--;
-			i++;
-		}
-		i = 0;
-		while (str[i] && str[i] != ' ')
-		{
-			write(1, &str[i], 1);
+			write(1, &av[1][i], 1);
 			i++;
 		}
 	}

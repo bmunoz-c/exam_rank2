@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 18:10:58 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/13 19:13:08 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/06/25 19:58:32 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/06/25 20:00:59 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,22 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_space(char c)
-{
-	return ((c >= 9 && c <= 13) || c == 32);
-}
-
 int	main(int ac, char **av)
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
+	char *str;
 
 	if (ac == 2)
 	{
-		i = 0;
 		str = av[1];
-		j = ft_strlen(str);
-		while (j >= 0)
-		{
-			if (str[j] == ' ')
-			{
-				i = j + 1;
-				while (str[i] != '\0' && str[i] != ' ')
-				{
-					write(1, &str[i], 1);
-					i++;
-				}
-				write(1, " ", 1);
-			}
-			j--;
-			i++;
-		}
-		i = 0;
-		while (str[i] && str[i] != ' ')
+		i = ft_strlen(str) - 1;
+		while (i >= 0)
 		{
 			write(1, &str[i], 1);
-			i++;
+			i--;
 		}
 	}
 	write(1, "\n", 1);
 	return (0);
+
 }
