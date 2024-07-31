@@ -1,51 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   epur_str.c                                         :+:      :+:    :+:   */
+/*   hidenp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 19:08:06 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/07 19:53:00 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/07/31 15:09:14 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/07/31 15:22:40 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+void	ft_putnbr(int n)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (n > 9)
+	{
+		ft_putnbr(n/10);
+		ft_putnbr(n%10);
+	}
+	else
+	{
+		n += 48;
+		write(1, &n, 1);
+	}
 }
 
 int	main(int ac, char **av)
 {
 	int		i;
 	int		j;
-	char	*str;
+	char	*s1;
+	char	*s2;
 
-	if (ac == 2)
+	if (ac == 3)
 	{
 		i = 0;
-		str = av[1];
-		j = ft_strlen(str) - 1;
-
-		while (j >= 0 && str[j] == ' ')
-			j--;
-		while (str[i] == ' ')
-			i++;
-		while (i <= j)
+		j = 0;
+		s1 = av[1];
+		s2 = av[2];
+		while (s1[i] && s2[j])
 		{
-			while (str[i] == ' ' && str[i + 1] == ' ')
+			if (s1[i] == s2[j])
 				i++;
-			write(1, &str[i], 1);
-			i++;
+			j++;
 		}
+		if (s1[i] == '\0')
+			ft_putnbr(1);
+		else
+			ft_putnbr(0);
 	}
 	write(1, "\n", 1);
 	return (0);
-	}
+}

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 13:23:18 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/07/19 13:39:35 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/07/31 12:34:01 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/07/31 12:45:19 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
-int		max(int	*tab, unsigned int len)
+int		max(int* tab, unsigned int len)
 {
 	int	n;
 	int	i;
@@ -28,10 +28,11 @@ int		max(int	*tab, unsigned int len)
 	return (n);
 }
 /*
+#include <stdio.h>
 int	main()
 {
-	int	tab[6] = { 1, 5, 7, 8, 2, 22 };
-
-	printf("Largest Number: %d\n", max(tab, 6));
+	int	n[] = {1, 4, 10, 5};
+	int	len = 4;
+	printf("%d\n", max(n, len));
 	return (0);
 }*/
