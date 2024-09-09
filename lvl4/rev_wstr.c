@@ -5,12 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 18:10:58 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/06/13 19:13:08 by bmunoz-c         ###   ########.fr       */
+/*   Created: 2024/09/04 19:45:33 by bmunoz-c          #+#    #+#             */
+/*   Updated: 2024/09/04 20:16:43 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+int	is_space(char c)
+{
+	return ((c >= 9 && c <= 13) || c == 32);
+}
 
 int	ft_strlen(char *str)
 {
@@ -22,11 +27,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	is_space(char c)
-{
-	return ((c >= 9 && c <= 13) || c == 32);
-}
-
 int	main(int ac, char **av)
 {
 	int		i;
@@ -35,15 +35,14 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		i = 0;
 		str = av[1];
-		j = ft_strlen(str);
+		j = ft_strlen(str) - 1;
 		while (j >= 0)
 		{
-			if (str[j] == ' ')
+			if (is_space(str[j]))
 			{
 				i = j + 1;
-				while (str[i] != '\0' && str[i] != ' ')
+				while (str[i] && !is_space(str[i]))
 				{
 					write(1, &str[i], 1);
 					i++;
@@ -51,10 +50,9 @@ int	main(int ac, char **av)
 				write(1, " ", 1);
 			}
 			j--;
-			i++;
 		}
 		i = 0;
-		while (str[i] && str[i] != ' ')
+		while (str[i] && !is_space(str[i]))
 		{
 			write(1, &str[i], 1);
 			i++;
