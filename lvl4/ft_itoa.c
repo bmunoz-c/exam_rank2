@@ -6,7 +6,7 @@
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:54:07 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/09/05 18:00:28 by bmunoz-c         ###   ########.fr       */
+/*   Updated: 2024/09/13 22:50:36 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ char	*ft_itoa(int nbr)
 	int		len;
 	char	*res;
 
-	len = num_len(nbr) - 1;
+	len = num_len(nbr);
 	res = malloc(sizeof(char) * len + 1);
 	res[len] = '\0';
-	//len--;
+	len--;
 	if (nbr == 0)
 		return ("0");
 	if (nbr == -2147483648)

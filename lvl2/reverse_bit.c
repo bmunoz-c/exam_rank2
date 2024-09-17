@@ -6,7 +6,7 @@
 /*   By: bmunoz-c <bmunoz-c@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 19:23:37 by bmunoz-c          #+#    #+#             */
-/*   Updated: 2024/07/31 19:29:19 by bmunoz-c         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:10:28 by bmunoz-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ unsigned char reverse_bits(unsigned char octet)
 	while (i > 0)
 	{
 		res = res * 2 + (octet % 2);
-		octet = octet / 2;
+		octet /= 2;
 		i--;
 	}
 	return (res);
